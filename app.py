@@ -2,6 +2,12 @@ import streamlit as st
 import pandas as pd
 import requests
 import pickle
+import os
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+
 
 # Load the processed data and similarity matrix
 with open('movie_data.pkl', 'rb') as file:
@@ -18,7 +24,7 @@ def get_recommendations(title, cosine_sim=cosine_sim):
 
 # Fetch movie poster from TMDB API
 def fetch_poster(movie_id):
-    api_key = '7b995d3c6fd91a2284b4ad8cb390c7b8'  # Replace with your TMDB API key
+    api_key = os.getenv("API_KEY")  # Replace with your TMDB API key
     url = f'https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}'
     response = requests.get(url)
     data = response.json()
