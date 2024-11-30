@@ -1,4 +1,4 @@
 pandas==2.2.2
 Requests==2.32.3
 streamlit==1.35.0
-dotenv
+dotenv==0.21.0
